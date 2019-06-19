@@ -9,7 +9,7 @@ module.exports = {
       },
       { 
         text: 'DailyShare', 
-        link: '/DailyShare/'
+        link: '/note/DailyShare/'
       },
       { 
         text: 'Github', 
@@ -28,5 +28,5 @@ module.exports = {
     // sidebar: "auto",
     lastUpdated: 'Last Updated',
   },
-  base: "."
+  base: "/note/"
 }
