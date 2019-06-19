@@ -28,5 +28,5 @@ module.exports = {
     // sidebar: "auto",
     lastUpdated: 'Last Updated',
   },
-  base: ""
+  base: "."
 }
