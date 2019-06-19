@@ -29,7 +29,9 @@ module.exports = {
         '2019.6.19',
       ],
       '/': [
-        'javascript'
+        'Javascript',
+        'Go',
+        'C'
       ],
     },
     lastUpdated: 'Last Updated',
