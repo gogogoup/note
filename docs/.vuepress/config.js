@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'Document',
-  description: 'Note',
+  title: 'DooooonFun',
+  description: "",
   themeConfig: {
     nav: [
       { 
@@ -11,18 +11,25 @@ module.exports = {
         text: 'DailyShare', 
         link: '/DailyShare/'
       },
+      {
+        text: 'Writting',
+        link: '/Writting/'
+      },
       { 
         text: 'Github', 
         link: 'https://github.com/gogogoup' 
-      },
+      }
     ],
     sidebar: {
       '/DailyShare/': [
         '2019.6.19',
         '2019.6.18',
       ],
+      '/Writting/': [
+        '2019.6.19',
+      ],
       '/': [
-        'homePage1'
+        'javascript'
       ],
     },
     lastUpdated: 'Last Updated',
