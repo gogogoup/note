@@ -2,6 +2,20 @@
 
 [[toc]]
 
+## 数组和切片关系
+* 数组  
+是一段连续的内存，定长，且长度不能更改，导致`[3]int, [4]int`是不同类型，所以使用很少
+* 切片  
+实际上是个结构体
+```go
+type slice struct {
+  len int
+  cap int
+  array unsafe.Pointer
+}
+```
+所以切片是包含指向底层数组的指针。同时，底层数组也可以被其他切片引用，因此修改底层数组会影响到引用它的其他切片。
+
 ## 切片作为形参
 函数传入切片作为形参到底是值传递还是引用传递？  
 结论：是值传递
@@ -40,16 +54,42 @@ func growslice(et *_type, old slice, cap int) slice {
 * 当增加之后的新容量的两倍a大于就容量的两倍b时，会设定新容量为a
 * 当容量大于1024时，确实会增加到原来的1.25倍，但是在最后，会有roundupsize的调用，进行一次内存对齐，所以会导致新容量>=旧容量的1.25倍
 
-## 数组和切片关系
-* 数组  
-是一段连续的内存，定长，且长度不能更改，导致`[3]int, [4]int`是不同类型，所以使用很少
-* 切片  
-实际上是个结构体
+## interface
+
+我在很长一段时间内都不知道interface到底有什么用。直到出现需要这个的需求的时候，才明白，哦原来是这样子。这么看到，学习如果不能和实际工作结合起来，总是理解的比较浅，至少在我身上是这样。 
+   
+首先，接口是让go这个静态语言能够支持duck type，来完成动态语言形参不定义类型的写法，是编译器的一种对象推断策略。  
+当函数的传入参数是个接口，只需要传入参数能实现接口定义的方法，编译器就可以通过，代码就能正常跑下去。
 ```go
-type slice struct {
-  len int
-  cap int
-  array unsafe.Pointer
+package main
+
+import "fmt"
+
+func main() {
+	m := Man{}
+	w := Woman{}
+	Wow(m)
+	Wow(w)
+}
+
+type HelloOne interface {
+	sayHi()
+}
+
+func Wow(h HelloOne)  {
+	h.sayHi()
+}
+
+type Man struct {}
+type Woman struct {}
+
+func (Man) sayHi() {
+	fmt.Println("yo bro!")
+}
+
+func (Woman) sayHi() {
+	fmt.Println("hi honey!")
 }
 ```
-所以切片是包含指向底层数组的指针。同时，底层数组也可以被其他切片引用，因此修改底层数组会影响到引用它的其他切片。
+* 类型只要实现了接口规定的所有方法，那就认为它实现了接口，而不是像java，需要显式的声明它实现了接口
+* golang其实在传入到Wow之前，就把实现了接口的变量隐式的转换成了接口变量，所以可以像其他静态类型一样做编译检查
