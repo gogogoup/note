@@ -25,5 +25,14 @@ git分成三个区：工作区，暂存区，版本库
   * `git branch BRANCHNAME`创建新分支但是停留在当前分支
   * `git checkout -b BRANCHNAME`创建并切换到新的分支
 2. 切换分支：`git checkout BRANCHNAME`
-3. 查看本地分支列表：`git branch`
-4. 删除本地分支`git branch -d BRANCHNAME`
+3. 查看分支
+  * 本地分支列表：`git branch`
+  * 远程分支：`git branch -r`
+  * 所有分支：`git branch -a`
+4. 将本地分支推到远端仓库：`git push REMOTE LOCALBRANCHNAME`
+5. 删除
+  * 本地分支`git branch -d BRANCHNAME`
+  * 远端分支`git branch -dr REMOTE/BRANCHNAME`
+6. 合并分支
+  * `git merge BRANCHNAME` 合并指定分支到当前分支
+  * `git cherry-pick COMMITID` 选择一个commit，合并到当前分支（这个貌似比较少用到）
