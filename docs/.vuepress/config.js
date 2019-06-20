@@ -34,7 +34,7 @@ module.exports = {
         'Go',
         'C',
         'Git',
-        'SomeIdea'
+        // 'SomeIdea'
       ],
     },
     lastUpdated: 'Last Updated',
