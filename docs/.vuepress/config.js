@@ -32,7 +32,8 @@ module.exports = {
       '/': [
         'Javascript',
         'Go',
-        'C'
+        'C',
+        'Git'
       ],
     },
     lastUpdated: 'Last Updated',
