@@ -91,3 +91,89 @@ func (Woman) sayHi() {
 ```
 * 类型只要实现了接口规定的所有方法，那就认为它实现了接口，而不是像java，需要显式的声明它实现了接口
 * golang其实在传入到Wow之前，就把实现了接口的变量隐式的转换成了接口变量，所以可以像其他静态类型一样做编译检查
+
+### 底层结构
+分成iface和eface，区别在于iface描述的接口包含方法，eface是空接口
+![](/note/2019-06-21-13-45-55.png)
+#### iface
+```go
+type iface struct {
+	tab  *itab
+	data unsafe.Pointer
+}
+```
+内部维护两个指针  
+1. tab指向itab实体，表示接口的类型以及赋给这个接口的实体类型
+2. data指向接口具体的值，一般是指向堆内存的指针  
+
+#### itab
+```go
+type itab struct {
+	inter  *interfacetype
+	_type  *_type
+	link   *itab
+	hash   uint32 // copy of _type.hash. Used for type switches.
+	bad    bool   // type does not implement interface
+	inhash bool   // has this itab been added to hash?
+	unused [2]byte
+	fun    [1]uintptr // variable sized
+}
+```
+1. _type描述实体的类型，包括内存对齐方式，大小等，实际上是描述go中各种数据类型的结构体
+2. inter描述了接口的类型
+3. fun字段放置了和接口方法对应的具体数据类型的方法地址，实现接口调用方法的动态分派。当给接口赋值时会更新这个表。需要注意的是，fun数组的大小是1，如果接口定义了多个方法时，数组存的是第一个方法的函数指针，其他方法是在它之后的内存中继续存粗，所以是ok的  
+
+#### interfacetype  
+```go
+type interfacetype struct {
+	typ     _type
+	pkgpath name
+	mhdr    []imethod
+}
+```
+1. _type，跟前面的相同
+2. mhdr，表示接口所定义的函数列表
+3. pkgpath，记录定义接口的包名  
+
+#### _type
+```go
+type _type struct {
+  // 类型大小
+	size       uintptr
+  ptrdata    uintptr
+  // 类型的 hash 值
+  hash       uint32
+  // 类型的 flag，和反射相关
+  tflag      tflag
+  // 内存对齐相关
+  align      uint8
+  fieldalign uint8
+  // 类型的编号，有bool, slice, struct 等等等等
+	kind       uint8
+	alg        *typeAlg
+	// gc 相关
+	gcdata    *byte
+	str       nameOff
+	ptrToThis typeOff
+}
+```
+
+举例：
+#### 接口变量可以储存任何实现了接口定义的所有方法的变量
+```go
+var r io.Reader
+tty, err := os.OpenFile("/test", os.O_RDWR, 0)
+if err != nil {
+  return nil, err
+}
+r = tty
+```
+![](/note/2019-06-21-14-47-33.png)  
+1. 声明r是io.Reader类型，是个interface（静态类型），它的动态类型是nil，动态值也是nil
+2. 定义一个tty，OpenFile返回的是个file的指针，*os.File
+3. r = tty，将r的动态类型变成*os.File，动态值非空，r可以用`<value, type>`表示`<tty, *os.File>`
+4. r的fun中指向的方法是Read，但是储存了tty变量之后，r还具有了io.Writer接口的方法，所以
+```go
+var w io.Writer
+w = r.(io.Writer)
+```
