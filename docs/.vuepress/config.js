@@ -26,6 +26,8 @@ module.exports = {
         '2019.6.18',
       ],
       '/Writting/': [
+        '2019.8.20',
+        'bwsbcfwkff',
         '2019.7.2',
         '2019.6.27',
         '2019.6.20',
@@ -33,6 +35,7 @@ module.exports = {
       ],
       '/': [
         'Javascript',
+        'Css',
         'Go',
         'C',
         'Git',
