@@ -99,3 +99,106 @@
 7. 结束时分成两种
     * oldStartIdx > oldEndIdx：newStartIdx和newEndIdx之间就是新增的了，直接插入
     * newStartIdx > newEndIdx：oldStartIdx和oldEndIdx之间就是需要删除的
+
+
+## js存储数据到图片
+
+问题来源于自己做的chromeExtension工具中，受限于Chrome提供的api中没有文件写入的相关api，不能存储todo的数据。而直接存储数据，总觉得不够帅气。  
+偶然看到有选手利用图片压缩数据的思路，就尝试把todo数据塞到图片，然后提供下载和解析功能，完成数据的导出导入。具体思路是：
+
+### 将字符串数据转成像素值
+因为每个像素值的四个通道值范围是0-255，也就是8位二进制值，所以需要将字符串的每个字符做utf8编码，然后转十进制，得到0-255之间的值。  
+  - 如果字符是单字节，直接获取unicode码点  
+  - 如果是多字节字符，有两种方式  
+    - 获取到字符unicode，照着utf8编码规则，几个if下去，判断出范围，拆成对应的多个字节
+    - `encodeURI`会对传入字符做utf8编码转义，%作为间隔符号，得到字符拆成多字节后的16进制值，然后parseInt("xxx", 16)获取到10进制数据
+
+### 使用转换后的像素数据，绘图
+
+#### alpha通道不能传值
+单个像素的四个通道，如果都设置了，在生成图片后再解析，会有偏差。  
+原因是：浏览器对像素的合成做`premultiplied alpha`处理，会在合成的之前，对像素的rgb通道乘以透明度
+  - 举例：两个像素的图片，左边是纯红色rgba(255,0,0,1)，右边是有透明度的绿色rgba(0,255,0,0.1)。当把图片缩放到1x1的时候，最后合成的像素是左右两个像素插值的结果，也就是各个通道值相加除2
+    - straignt alpha： rgba(127,127,0,0.55)
+    - premultiplied alpha: rgba(127,25,0,0.55)
+    - ![](/note/2019-12-17-14-22-04.png)
+    - straignt alpha的绿色会更重，因为在插值的时候没有乘透明度，而透明度是会影响所以通道值的，这样会导致像素插值的时候失真  
+没有办法修改浏览器的默认行为。解决方式是把alpha通道值全部设成255，也就是alpha值在公式中是1，不会导致偏差
+- 所以，需要将字符串的数据按每三个一个像素的方式进行存储
+- 字符串数据的长度可能不能被三整除，需要补位。具体做法是，补位的通道值都设置成255。将像素数据的第一个值，定义为消息位，r通道值为补位像素个数。解码的时候读了第一个像素的r通道值后存下来，到遍历的最后一个时，只取对应的有效值就行。
+
+#### canvas绘图的尺寸设定
+canvas生成图片的要求是`传入的像素素组长度 = 4 * 图片宽度 * 图片高度`。  
+所以预设一个最大的图片宽度，然后穷举，从最大开始依次减小，长度/4/宽度，得到的是个整数，就认为是个合法的宽高了。  
+致命缺点：如果长度刚好是个质数，就莫法了，只能手动加个像素，并且在第一个像素的g通道标示。  
+利用canvas绘图api，传入图片信息，设定的尺寸，进行绘图
+
+### 解析生成的图片为字符串
+- 获取上传图片的二进制值，
+  - 添加上传事件的监听，获取到file对象，传入fileReader
+    - 如果是文本/json，readAsText；
+    - 如果是图片，readAsDataURL，
+  - 传入新增加img对象中，监听onload事件，读url，获取到上传图片的base64值
+  - 传入canvas的drawImage，读canvas数据，得到二进制值
+- 像素值转字符串
+  - PixToData
+    ```js
+    PixToData(pixList) {
+      let lastCount;
+      let res = [];
+      for (let i = 0; i < pixList.length; i += 4) {
+        if (i === 0) {
+          // 补位像素的提示像素
+          lastCount = pixList[i]
+        } else if (i === pixList.length - 4 && lastCount !== 0) {
+          for (let j = 0; j < lastCount; j++) {
+            res.push(pixList[i + j]);
+          }
+        } else {
+          res.push(pixList[i], pixList[i + 1], pixList[i + 2]);
+        }
+      }
+      return res;
+    }
+    ```
+  - Utf8ArrayToString
+    ```js
+    Utf8ArrayToString(list) {
+      let res = "";
+      for (let i = 0; i < list.length; i++) {
+        let e = list[i];
+        let byte = e.toString(2);
+        if (byte.length < 8) {
+          // 单字节
+          res += String.fromCodePoint(e);
+        } else {
+          let count = 0;
+          // 根据第一个字节的二进制编码中首位1的个数，获取到该字符需要几个字节
+          for (let j = 0; j < byte.length; j++) {
+            const b = byte[j];
+            if (b === "1") {
+              continue
+            } else {
+              count = j;
+              break;
+            }
+          }
+          if (count > 0) {
+            let tmp = "";
+            for (let k = 0; k < count; k++) {
+              tmp += `%${list[i + k].toString(16)}`
+            }
+            !!tmp && (res += decodeURI(tmp));
+            i += (count - 1)
+          } else {
+            res += String.fromCodePoint(e);
+          }
+        }
+      }
+      return res;
+    }
+    ```
+    - 把每个数据转成二进制，补到8位
+    - 根据字节的首位1的数量，获取到该字符是由几个字节组成
+    - 把对应的字转成16进制，拼到一起，`decodeURI`
+    - 单字节直接`fromCodePoint`

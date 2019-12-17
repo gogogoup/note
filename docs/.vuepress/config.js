@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'DooooonFun',
-  description: "",
+  title: 'doFun',
+  description: "be water my friend",
   themeConfig: {
     nav: [
       { 
@@ -22,8 +22,13 @@ module.exports = {
     ],
     sidebar: {
       '/DailyShare/': [
-        '2019.6.19',
-        '2019.6.18',
+        '2019-12-05',
+        '2019-11-15',
+        '2019-11-11',
+        '2019-10-11',
+        '2019-09-26',
+        '2019-06-19',
+        '2019-06-18',
       ],
       '/Writting/': [
         '2019.8.20',
@@ -34,12 +39,12 @@ module.exports = {
         '2019.6.19',
       ],
       '/': [
+        '计算机基础',
         'Javascript',
         'Css',
         'Go',
         'C',
-        'Git',
-        // 'SomeIdea'
+        'Git'
       ],
     },
     lastUpdated: 'Last Updated',
