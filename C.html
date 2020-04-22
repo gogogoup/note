@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>C | doFun</title>
+    <meta name="generator" content="VuePress 1.4.1">
+    
+    <meta name="description" content="be water my friend">
+    <link rel="preload" href="/note/assets/css/0.styles.06ad8ea8.css" as="style"><link rel="preload" href="/note/assets/js/app.2e5e5d15.js" as="script"><link rel="preload" href="/note/assets/js/2.0d9fcc6c.js" as="script"><link rel="preload" href="/note/assets/js/5.7ea98ef5.js" as="script"><link rel="prefetch" href="/note/assets/js/10.4020279d.js"><link rel="prefetch" href="/note/assets/js/11.98f21b9c.js"><link rel="prefetch" href="/note/assets/js/12.25bf1360.js"><link rel="prefetch" href="/note/assets/js/13.96901a78.js"><link rel="prefetch" href="/note/assets/js/14.fc5e00e8.js"><link rel="prefetch" href="/note/assets/js/15.7131b397.js"><link rel="prefetch" href="/note/assets/js/16.a6634466.js"><link rel="prefetch" href="/note/assets/js/17.a05d7a88.js"><link rel="prefetch" href="/note/assets/js/18.984bce13.js"><link rel="prefetch" href="/note/assets/js/19.c5166816.js"><link rel="prefetch" href="/note/assets/js/20.d5aacbe4.js"><link rel="prefetch" href="/note/assets/js/21.93d62206.js"><link rel="prefetch" href="/note/assets/js/22.aa0aa2ea.js"><link rel="prefetch" href="/note/assets/js/23.31e27050.js"><link rel="prefetch" href="/note/assets/js/24.e846da92.js"><link rel="prefetch" href="/note/assets/js/25.480a41f4.js"><link rel="prefetch" href="/note/assets/js/26.96a87f01.js"><link rel="prefetch" href="/note/assets/js/27.ed072997.js"><link rel="prefetch" href="/note/assets/js/28.d0c806db.js"><link rel="prefetch" href="/note/assets/js/3.cdc5ffc6.js"><link rel="prefetch" href="/note/assets/js/4.fca74266.js"><link rel="prefetch" href="/note/assets/js/6.cecb269b.js"><link rel="prefetch" href="/note/assets/js/7.b8cf5606.js"><link rel="prefetch" href="/note/assets/js/8.eab8faa7.js"><link rel="prefetch" href="/note/assets/js/9.13153f45.js">
+    <link rel="stylesheet" href="/note/assets/css/0.styles.06ad8ea8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note/" class="home-link router-link-active"><!----> <span class="site-name">doFun</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/note/DailyShare/" class="nav-link">
+  DailyShare
+</a></div><div class="nav-item"><a href="/note/Writting/" class="nav-link">
+  Writting
+</a></div><div class="nav-item"><a href="https://github.com/gogogoup" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/note/DailyShare/" class="nav-link">
+  DailyShare
+</a></div><div class="nav-item"><a href="/note/Writting/" class="nav-link">
+  Writting
+</a></div><div class="nav-item"><a href="https://github.com/gogogoup" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note/计算机基础.html" class="sidebar-link">计算机基础</a></li><li><a href="/note/Javascript.html" class="sidebar-link">Javascript</a></li><li><a href="/note/Css.html" class="sidebar-link">Css</a></li><li><a href="/note/Go.html" class="sidebar-link">Golang</a></li><li><a href="/note/C.html" class="active sidebar-link">C</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note/C.html#程序结构" class="sidebar-link">程序结构</a></li><li class="sidebar-sub-header"><a href="/note/C.html#基本语法" class="sidebar-link">基本语法</a></li><li class="sidebar-sub-header"><a href="/note/C.html#数据类型" class="sidebar-link">数据类型</a></li><li class="sidebar-sub-header"><a href="/note/C.html#变量" class="sidebar-link">变量</a></li><li class="sidebar-sub-header"><a href="/note/C.html#常量" class="sidebar-link">常量</a></li><li class="sidebar-sub-header"><a href="/note/C.html#存储类" class="sidebar-link">存储类</a></li><li class="sidebar-sub-header"><a href="/note/C.html#运算符" class="sidebar-link">运算符</a></li><li class="sidebar-sub-header"><a href="/note/C.html#判断" class="sidebar-link">判断</a></li><li class="sidebar-sub-header"><a href="/note/C.html#循环" class="sidebar-link">循环</a></li><li class="sidebar-sub-header"><a href="/note/C.html#函数" class="sidebar-link">函数</a></li><li class="sidebar-sub-header"><a href="/note/C.html#作用域规则" class="sidebar-link">作用域规则</a></li><li class="sidebar-sub-header"><a href="/note/C.html#数组" class="sidebar-link">数组</a></li><li class="sidebar-sub-header"><a href="/note/C.html#枚举enum" class="sidebar-link">枚举enum</a></li><li class="sidebar-sub-header"><a href="/note/C.html#指针" class="sidebar-link">指针</a></li><li class="sidebar-sub-header"><a href="/note/C.html#字符串" class="sidebar-link">字符串</a></li><li class="sidebar-sub-header"><a href="/note/C.html#结构体" class="sidebar-link">结构体</a></li></ul></li><li><a href="/note/Git.html" class="sidebar-link">Git</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="c"><a href="#c" class="header-anchor">#</a> C</h1> <p></p><div class="table-of-contents"><ul><li><a href="#程序结构">程序结构</a></li><li><a href="#基本语法">基本语法</a></li><li><a href="#数据类型">数据类型</a></li><li><a href="#变量">变量</a></li><li><a href="#常量">常量</a></li><li><a href="#存储类">存储类</a></li><li><a href="#运算符">运算符</a></li><li><a href="#判断">判断</a></li><li><a href="#循环">循环</a></li><li><a href="#函数">函数</a></li><li><a href="#作用域规则">作用域规则</a></li><li><a href="#数组">数组</a></li><li><a href="#枚举enum">枚举enum</a></li><li><a href="#指针">指针</a></li><li><a href="#字符串">字符串</a></li><li><a href="#结构体">结构体</a></li></ul></div><p></p> <h2 id="程序结构"><a href="#程序结构" class="header-anchor">#</a> 程序结构</h2> <ul><li>预处理器指令</li> <li>函数</li> <li>变量</li> <li>语句&amp;表达式</li> <li>注释</li></ul> <h2 id="基本语法"><a href="#基本语法" class="header-anchor">#</a> 基本语法</h2> <ul><li>令牌</li> <li>分号</li> <li>注释</li> <li>标识符</li> <li>关键字</li> <li>空格</li></ul> <h2 id="数据类型"><a href="#数据类型" class="header-anchor">#</a> 数据类型</h2> <ul><li>基本类型<br>
+是算术类型
+<ul><li>整数类型
+<ul><li>char<br>
+一个字节，八位</li> <li>unsigned char</li> <li>signed char</li> <li>int<br>
+2/4个字节，16/32位，取决于系统位数</li> <li>unsigned int</li> <li>short</li> <li>unsigned short</li> <li>long</li> <li>unsigned long</li></ul></li> <li>浮点类型
+<ul><li>float<br>
+单精度浮点值，4个字节，32位：1位符号，8位指数，23位小数<br> <img src="/note/2019-06-13-14-29-23.png" alt="float"></li> <li>double<br>
+双精度浮点数，8个字节，64位：1位符号，11位指数，52位小数<br> <img src="/note/2019-06-13-14-34-06.png" alt=""></li> <li>long double</li></ul></li></ul></li> <li>枚举类型<br>
+也是算术类型，定义程序中只能赋予一定的离散的整数值的变量</li> <li>void类型<br>
+没有可用的值</li> <li>派生类型
+<ul><li>指针类型</li> <li>数组类型</li> <li>结构类型</li> <li>共用体类型</li> <li>函数类型</li></ul></li></ul> <h2 id="变量"><a href="#变量" class="header-anchor">#</a> 变量</h2> <ul><li>变量定义<div class="language- extra-class"><pre class="language-text"><code>type variable_list;
+type variable_name = value;
+</code></pre></div></li> <li>变量声明<br>
+变量的声明和定义是可以分开的，如果希望只声明而不定义，可以使用关键字extern进行声明<div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">extern</span> <span class="token keyword">int</span> i<span class="token punctuation">;</span> <span class="token comment">// 声明但不定义，可以在别的文件中定义。用于在当前文件引用其他文件中定义的变量</span>
+<span class="token keyword">int</span> i<span class="token punctuation">;</span>  <span class="token comment">// 声明，同时也定义</span>
+</code></pre></div></li> <li>左值和右值</li></ul> <h2 id="常量"><a href="#常量" class="header-anchor">#</a> 常量</h2> <ul><li>常量又叫字面量</li> <li>整数常量
+<ul><li>前缀
+<ul><li>0x：十六进制</li> <li>0：八进制</li> <li>不带前缀：十进制</li></ul></li> <li>后缀
+<ul><li>u/U：无符号整数</li> <li>l/L：长整数</li></ul></li></ul> <div class="language-c extra-class"><pre class="language-c"><code><span class="token number">85</span>         <span class="token comment">/* 十进制 */</span>
+<span class="token number">0213</span>       <span class="token comment">/* 八进制 */</span>
+<span class="token number">0x4b</span>       <span class="token comment">/* 十六进制 */</span>
+<span class="token number">30</span>         <span class="token comment">/* 整数 */</span>
+<span class="token number">30u</span>        <span class="token comment">/* 无符号整数 */</span>
+<span class="token number">30l</span>        <span class="token comment">/* 长整数 */</span>
+<span class="token number">30ul</span>       <span class="token comment">/* 无符号长整数 */</span>
+</code></pre></div></li> <li>浮点常量
+<ul><li>小数形式
+<ul><li>包含整数部分，小数点，小数部分</li></ul></li> <li>指数形式
+<ul><li>小数点，指数</li></ul></li></ul></li> <li>字符常量
+<ul><li>括在单引号中</li></ul></li> <li>字符串常量
+<ul><li>括在双引号中</li></ul></li> <li>定义常量
+<ul><li>#define 预处理器</li></ul> <div class="language- extra-class"><pre class="language-text"><code>#define identifier value
+</code></pre></div><ul><li>const 关键字</li></ul> <div class="language- extra-class"><pre class="language-text"><code>const type variable = value;
+</code></pre></div></li></ul> <h2 id="存储类"><a href="#存储类" class="header-anchor">#</a> 存储类</h2> <ul><li>auto
+<ul><li>局部变量的默认存储类，只能用在函数内</li></ul></li> <li>register
+<ul><li>存储在寄存器而不是ram中的局部变量，变量最大尺寸等于寄存器的大小，没有内存位置</li> <li>只用于需要快速访问的变量，比如计数器</li></ul></li> <li>static
+<ul><li>指示编译器在程序生命周期内保持局部变量的存在，不需要在进入和离开作用域的时候创建/销毁</li> <li>主要用于当前文件内的全局变量储存类</li></ul></li> <li>extern
+<ul><li>提供一个全局变量的引用，对所有程序文件都是可见的</li> <li>通常用于两个或多个文件共享相同的全局变量或函数时</li></ul></li></ul> <h2 id="运算符"><a href="#运算符" class="header-anchor">#</a> 运算符</h2> <ul><li>算术运算符<br> <code>+，-，*，/，%，++，--</code></li> <li>关系运算符<br> <code>==，!=，&gt;, &lt;, &gt;=, &lt;=</code></li> <li>逻辑运算符<br> <code>&amp;&amp;, ||, !</code></li> <li>位运算符<br> <code>&amp;, |, ^, &lt;&lt;, &gt;&gt;</code><br>
+位与，位或，异或，二进制左移，二进制右移</li> <li>赋值运算符<br> <code>=, +=, -=, *=, /=, %=, &lt;&lt;=, &gt;&gt;=, &amp;=, ^=, |=</code></li> <li>杂项运算符<br> <code>sizeof(), &amp;, *, ?:(三元)</code></li> <li>运算符优先级</li></ul> <h2 id="判断"><a href="#判断" class="header-anchor">#</a> 判断</h2> <ul><li>if/if...else.../switch</li> <li>三元运算符</li></ul> <h2 id="循环"><a href="#循环" class="header-anchor">#</a> 循环</h2> <ul><li>while</li> <li>for</li> <li>do...while...</li> <li>嵌套循环</li> <li>循环控制语句
+<ul><li>break</li> <li>continue</li> <li>goto</li></ul></li></ul> <h2 id="函数"><a href="#函数" class="header-anchor">#</a> 函数</h2> <ul><li>定义<div class="language- extra-class"><pre class="language-text"><code>return_type function_name (parameter list)
+{
+  body of the function
+}
+</code></pre></div></li> <li>函数声明
+<ul><li>函数声明是告诉编译器函数名称和如何调用函数，主体可以单独定义</li></ul> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">int</span> <span class="token function">max</span><span class="token punctuation">(</span><span class="token keyword">int</span> num1<span class="token punctuation">,</span> <span class="token keyword">int</span> num2<span class="token punctuation">)</span>
+<span class="token keyword">int</span> <span class="token function">max</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token keyword">int</span><span class="token punctuation">)</span>
+</code></pre></div></li> <li>函数调用</li> <li>函数参数
+<ul><li>传值调用：把参数的实际值复制给函数的形参，修改形参不影响实际参数</li> <li>引用调用：通过指针传递，形参是指向实际参数的指针，修改形参会影响实际参数</li></ul></li></ul> <h2 id="作用域规则"><a href="#作用域规则" class="header-anchor">#</a> 作用域规则</h2> <ul><li>局部变量和全局变量在内存中的区别：
+<ul><li>全局变量保存在内存的<strong>全局存储区</strong></li> <li>局部变量保存在<strong>栈</strong>中，只有在所在函数被调用时才会动态的分配存储单元</li></ul></li> <li>初始化区别：
+<ul><li>局部变量在定义时不会初始化</li> <li>全局变量定义时就被初始化了
+<img src="/note/2019-06-13-17-02-23.png" alt=""></li></ul></li></ul> <h2 id="数组"><a href="#数组" class="header-anchor">#</a> 数组</h2> <h2 id="枚举enum"><a href="#枚举enum" class="header-anchor">#</a> 枚举enum</h2> <p><code>enum 枚举名 {枚举元素1， 枚举元素2, ......}</code></p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">enum</span> <span class="token class-name">Day</span> 
+<span class="token punctuation">{</span>
+  MON <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> TUE<span class="token punctuation">,</span> WED<span class="token punctuation">,</span> THU<span class="token punctuation">,</span> FRI<span class="token punctuation">,</span> SAT<span class="token punctuation">,</span> SUN
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>如果不设置，默认第一个元素是0</li> <li>后续枚举元素会在前一个成员上加1</li></ul> <div class="language-c extra-class"><pre class="language-c"><code><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token punctuation">{</span>
+  <span class="token keyword">enum</span> <span class="token class-name">Day</span>
+  <span class="token punctuation">{</span>
+    mon<span class="token punctuation">,</span>
+    tue<span class="token punctuation">,</span>
+    wed<span class="token punctuation">,</span>
+    tur<span class="token punctuation">,</span>
+    fri<span class="token punctuation">,</span>
+    sat<span class="token punctuation">,</span>
+    sun
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">enum</span> <span class="token class-name">Day</span> oneDay<span class="token punctuation">;</span>
+  oneDay <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">enum</span> <span class="token class-name">Day</span><span class="token punctuation">)</span> a<span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;oneDay: %d \n&quot;</span><span class="token punctuation">,</span> oneDay<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="指针"><a href="#指针" class="header-anchor">#</a> 指针</h2> <p>指针是个变量，值是另外一个变量的内存地址<br> <code>type *var-name;</code></p> <ul><li>取一个变量的指针，通过<code>&amp;</code></li> <li>获取一个指针指向的内存地址的值，通过<code>*</code></li></ul> <h2 id="字符串"><a href="#字符串" class="header-anchor">#</a> 字符串</h2> <p>字符串实际上是使用null，字符<code>\0</code>终止的一维字符数组</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+ 
+<span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">char</span> greeting<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'H'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'l'</span><span class="token punctuation">,</span> <span class="token string">'l'</span><span class="token punctuation">,</span> <span class="token string">'o'</span><span class="token punctuation">,</span> <span class="token string">'\0'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Greeting message: %s\n&quot;</span><span class="token punctuation">,</span> greeting <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>会打印出“Hello”<br>
+操作字符串函数示例：</p> <ul><li><code>strcpy(s1, s2)</code>：复制字符串2到字符串1</li> <li><code>strcat(s1, s2)</code>：连接字符串2到字符串1的末尾</li> <li><code>strlen(s1)</code>：返回字符串1的长度</li> <li><code>strcmp(s1, s2)</code>：如果 s1 和 s2 是相同的，则返回 0；如果 s1 &lt; s2 则返回小于 0；如果 s1 &gt; s2 则返回大于 0</li> <li><code>strchr(s1, ch)</code>：返回一个指针，指向字符串 s1 中字符 ch 的第一次出现的位置</li> <li><code>strstr(s1, s2)</code>：返回一个指针，指向字符串 s1 中字符串 s2 的第一次出现的位置</li></ul> <h2 id="结构体"><a href="#结构体" class="header-anchor">#</a> 结构体</h2> <ul><li>定义<div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">struct</span> <span class="token class-name">Books</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">char</span> title<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">char</span> author<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">char</span> subject<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> book_id<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> book<span class="token punctuation">;</span>
+</code></pre></div>上面代码，
+<ul><li>声明了拥有三个成员的结构体</li> <li>声明了结构体变量是book</li> <li>结构体标签是Books</li></ul> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">struct</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">char</span> title<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">char</span> author<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">char</span> subject<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> book_id<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> book<span class="token punctuation">;</span>
+</code></pre></div><ul><li>无标签，结构体变量是book</li></ul> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">struct</span> <span class="token class-name">Books</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">char</span> title<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">char</span> author<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">char</span> subject<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> book_id<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">struct</span> <span class="token class-name">Books</span> b1<span class="token punctuation">,</span> b2<span class="token punctuation">,</span> b3<span class="token punctuation">;</span>
+</code></pre></div><ul><li>有标签为Books，但是没定义结构体变量</li> <li>定义变量b1, b2, b3的值是结构体</li></ul> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">typedef</span> <span class="token keyword">struct</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">char</span> title<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">char</span> author<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">char</span> subject<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> book_id<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> Books<span class="token punctuation">;</span>
+
+Books b1<span class="token punctuation">,</span> b2<span class="token punctuation">,</span> b3<span class="token punctuation">;</span>
+</code></pre></div></li></ul></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">6/19/2019, 6:55:15 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note/Go.html" class="prev">
+        Golang
+      </a></span> <span class="next"><a href="/note/Git.html">
+        Git
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/note/assets/js/app.2e5e5d15.js" defer></script><script src="/note/assets/js/2.0d9fcc6c.js" defer></script><script src="/note/assets/js/5.7ea98ef5.js" defer></script>
+  </body>
+</html>
