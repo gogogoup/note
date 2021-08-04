@@ -15,7 +15,14 @@
       position: relative;
       width: 100%;
       height: 100%;
-      border-radius: 500px 800px 300px 300px;
+    }
+    .bg {
+      position: absolute;
+      width: 80%;
+      height: 80%;
+      top: calc(10%);
+      left: calc(10%);
+      border-radius: 700px 1200px 800px 600px;
       background-image: linear-gradient(198deg, #2ec1c962 38%, #2c9be070 100%);
     }
     .icon_1 {
@@ -77,6 +84,7 @@
 </head>
 <body>
   <div class="container">
+    <div class="bg"></div>
     <div class="icon_person"></div>
     <div class="icon_1"></div>
     <div class="icon_2"></div>
@@ -85,27 +93,46 @@
   </div>
 
   <script>
+    const bg = document.querySelector('.bg');
     const person = document.querySelector('.icon_person');
+    const icon1 = document.querySelector('.icon_1');
+    const icon2 = document.querySelector('.icon_2');
     const icon3 = document.querySelector('.icon_3');
+    const icon4 = document.querySelector('.icon_4');
 
     const personRatio = 1;
-    const icon3Ratio = 1.5;
+    const iconRatio = 1;
+
+    let originData;
 
     window.addEventListener('deviceorientation', event => {
       const { alpha, beta, gamma } = event;
-      
-      let yMove = parseInt((beta - 90) * 2);
-      yMove = yMove > 100 ? 100 : yMove < -100 ? -100 : yMove;
-      const personYtransform = `translateY(${yMove * personRatio}px)`;
-      const icon3Ytransform = `translateY(${yMove * icon3Ratio}px)`;
 
-      let xMove = parseInt(alpha * 2);
-      xMove = xMove > 100 ? 100 : xMove < -100 ? -100 : xMove;
-      const personXtransform = `translateX(${xMove * personRatio}px)`;
-      const icon3Xtransform = `translateX(${xMove * icon3Ratio}px)`;
+      if (!originData) {
+        originData = { alpha, beta, gamma };
+      }
 
-      person.style.transform = `${personYtransform} ${personXtransform}`;
+      let yMove = parseInt((beta - originData.beta) * 0.9);
+      yMove = yMove > 30 ? 30 : yMove < -30 ? -30 : yMove;
+      const personYtransform = `translateY(${-yMove * personRatio}px)`;
+      const icon1Ytransform = `translateY(${yMove * iconRatio}px)`;
+      const icon2Ytransform = `translateY(${yMove * iconRatio}px)`;
+      const icon3Ytransform = `translateY(${yMove * iconRatio}px)`;
+      const icon4Ytransform = `translateY(${yMove * iconRatio}px)`;
+
+      let xMove = parseInt((alpha - originData.alpha) * 0.9);
+      xMove = xMove > 30 ? 30 : xMove < -30 ? -30 : xMove;
+      const personXtransform = `translateX(${-xMove * personRatio}px)`;
+      const icon1Xtransform = `translateX(${xMove * iconRatio}px)`;
+      const icon2Xtransform = `translateX(${xMove * iconRatio}px)`;
+      const icon3Xtransform = `translateX(${xMove * iconRatio}px)`;
+      const icon4Xtransform = `translateX(${xMove * iconRatio}px)`;
+
+      bg.style.transform = `${personYtransform} ${personXtransform}`;
+      icon1.style.transform = `${icon1Ytransform} ${icon1Xtransform}`;
+      icon2.style.transform = `${icon2Ytransform} ${icon2Xtransform}`;
       icon3.style.transform = `${icon3Ytransform} ${icon3Xtransform}`;
+      icon4.style.transform = `${icon4Ytransform} ${icon4Xtransform}`;
     });
 
   </script>
