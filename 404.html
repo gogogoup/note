@@ -102,6 +102,7 @@
 
     const personRatio = 1;
     const iconRatio = 1;
+    const max = 8;
 
     let originData;
 
@@ -113,7 +114,7 @@
       }
 
       let yMove = parseInt((beta - originData.beta) * 0.9);
-      yMove = yMove > 30 ? 30 : yMove < -30 ? -30 : yMove;
+      yMove = yMove > max ? max : yMove < -max ? -max : yMove;
       const personYtransform = `translateY(${-yMove * personRatio}px)`;
       const icon1Ytransform = `translateY(${yMove * iconRatio}px)`;
       const icon2Ytransform = `translateY(${yMove * iconRatio}px)`;
@@ -121,7 +122,7 @@
       const icon4Ytransform = `translateY(${yMove * iconRatio}px)`;
 
       let xMove = parseInt((alpha - originData.alpha) * 0.9);
-      xMove = xMove > 30 ? 30 : xMove < -30 ? -30 : xMove;
+      xMove = xMove > max ? max : xMove < -max ? -max : xMove;
       const personXtransform = `translateX(${-xMove * personRatio}px)`;
       const icon1Xtransform = `translateX(${xMove * iconRatio}px)`;
       const icon2Xtransform = `translateX(${xMove * iconRatio}px)`;
