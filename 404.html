@@ -91,35 +91,21 @@
     const personRatio = 1;
     const icon3Ratio = 1.5;
 
-    document.querySelector('.container').addEventListener('click', function() {
-      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        DeviceOrientationEvent.requestPermission().then(res => {
-          console.log(res);
-          if (res === 'granted') {
-            window.addEventListener('deviceorientation', event => {
-              const { alpha, beta, gamma } = event;
-              // console.log(alpha, beta, gamma);
-              /**
-               * alpha:
-               * beta: 小于90时，各部分向上滑动；大于90时，向下滑动
-               * gamma: 大于0，向右滑动；小于0，向左滑动
-               */
-              let yMove = parseInt((beta - 90) * 2);
-              yMove = yMove > 100 ? 100 : yMove < -100 ? -100 : yMove;
-              const personYtransform = `translateY(${yMove * personRatio}px)`;
-              const icon3Ytransform = `translateY(${yMove * icon3Ratio}px)`;
-        
-              let xMove = parseInt(alpha * 2);
-              xMove = xMove > 100 ? 100 : xMove < -100 ? -100 : xMove;
-              const personXtransform = `translateX(${xMove * personRatio}px)`;
-              const icon3Xtransform = `translateX(${xMove * icon3Ratio}px)`;
-        
-              person.style.transform = `${personYtransform} ${personXtransform}`;
-              icon3.style.transform = `${icon3Ytransform} ${icon3Xtransform}`;
-            }, false);
-          }
-        });
-      }
+    window.addEventListener('deviceorientation', event => {
+      const { alpha, beta, gamma } = event;
+      
+      let yMove = parseInt((beta - 90) * 2);
+      yMove = yMove > 100 ? 100 : yMove < -100 ? -100 : yMove;
+      const personYtransform = `translateY(${yMove * personRatio}px)`;
+      const icon3Ytransform = `translateY(${yMove * icon3Ratio}px)`;
+
+      let xMove = parseInt(alpha * 2);
+      xMove = xMove > 100 ? 100 : xMove < -100 ? -100 : xMove;
+      const personXtransform = `translateX(${xMove * personRatio}px)`;
+      const icon3Xtransform = `translateX(${xMove * icon3Ratio}px)`;
+
+      person.style.transform = `${personYtransform} ${personXtransform}`;
+      icon3.style.transform = `${icon3Ytransform} ${icon3Xtransform}`;
     });
 
   </script>
